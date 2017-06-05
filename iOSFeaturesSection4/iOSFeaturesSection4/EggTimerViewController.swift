@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EggTimerViewController: UIViewController {
+class EggTimerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var timerLabel: UILabel!
     
@@ -79,4 +79,15 @@ class EggTimerViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
 }
